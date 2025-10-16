@@ -18,7 +18,7 @@ const commentSchema =new Schema ({
     }
 },{
     timestamps:true,
-    versionKey:False
+    versionKey:false
 })
 
-export default model('Post',postSchema)
+export default model('Comment',commentSchema)

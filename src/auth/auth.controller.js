@@ -6,7 +6,6 @@ import { generarJWT } from '../../helpers/JWT-generate.js'
 export const register = async (req, res) => {
 try{
     const data= req.body
-
     let profilePicture= req.fileRelativepath || 'profiles/default-avatar.png'
     const encryptedPassword = await hash(data.password)
 
@@ -26,7 +25,7 @@ try{
         },
     });
 }catch(error){
-    return res.status (500).json({
+    return res.status(500).json({
         message:'Error al registrar usuario',
         err: error.message
     })
@@ -36,8 +35,8 @@ export const login = async (req, res) => {
     const { email, password, username } = req.body;
  
     try {
-        const lowerEmail = email ? email.toLowercase() : null;
-        const lowerUsername = username ? username.toLowercase() : null;
+        const lowerEmail = email ? email.toLowerCase() : null;
+        const lowerUsername = username ? username.toLowerCase() : null;
  
         const user = await User.findOne({
             $or: [{ email: lowerEmail }, { username: lowerUsername }],
